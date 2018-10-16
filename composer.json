@@ -1,0 +1,12 @@
+{
+    "name": "thijsdp/source-code-generator",
+    "authors": [
+        {
+            "name": "Thijs De Paepe",
+            "email": "thijs.depaepe@phpro.be"
+        }
+    ],
+    "require": {
+        "zendframework/zend-code": "^3.3"
+    }
+}
