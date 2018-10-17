@@ -17,6 +17,7 @@
         }
     }, 
     "require": {
-        "zendframework/zend-code": "^3.3"
+        "zendframework/zend-code": "^3.3",
+        "symfony/console": "^4.1"
     }
 }
