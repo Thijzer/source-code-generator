@@ -2,6 +2,8 @@
 
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\DocBlockGenerator;
+use Zend\Code\Generator\MethodGenerator;
+use Zend\Code\Generator\ParameterGenerator;
 
 require './vendor/autoload.php';
 
@@ -22,7 +24,18 @@ $docblock = new DocBlockGenerator(
     ]
 );
 
+$param = new ParameterGenerator('test', 'string');
+
+
+$method = new MethodGenerator(
+    'test',
+    [$param],
+    MethodGenerator::FLAG_PRIVATE
+);
+
 $foo->setName('Foo')
-    ->setDocblock($docblock);
+    ->setDocblock($docblock)
+    ->addMethodFromGenerator($method)
+;
 
 echo $foo->generate();
