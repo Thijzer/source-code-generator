@@ -7,10 +7,10 @@ require './vendor/autoload.php';
 
 $foo = new ClassGenerator();
 
-$docblock = new DocBlockGenerator([
-    'shortDescription' => 'Sample generated class',
-    'longDescription'  => 'This is a class generated with Zend\Code\Generator.',
-    'tags'             => [
+$docblock = new DocBlockGenerator(
+    'Sample generated class',
+    'This is a class generated with Zend\Code\Generator.',
+    [
         [
             'name'        => 'version',
             'description' => '$Rev:$',
@@ -19,8 +19,9 @@ $docblock = new DocBlockGenerator([
             'name'        => 'license',
             'description' => 'New BSD',
         ],
-    ],
-]);
+    ]
+);
+
 $foo->setName('Foo')
     ->setDocblock($docblock);
 
