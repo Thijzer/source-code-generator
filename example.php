@@ -4,38 +4,14 @@ use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\DocBlockGenerator;
 use Zend\Code\Generator\MethodGenerator;
 use Zend\Code\Generator\ParameterGenerator;
+use Zend\Code\Generator\BodyGenerator;
+use App\Blocks\ClassHelper;
 
 require './vendor/autoload.php';
 
-$foo = new ClassGenerator();
+$foo = ClassHelper::createClass('Foo');
 
-$docblock = new DocBlockGenerator(
-    'Sample generated class',
-    'This is a class generated with Zend\Code\Generator.',
-    [
-        [
-            'name'        => 'version',
-            'description' => '$Rev:$',
-        ],
-        [
-            'name'        => 'license',
-            'description' => 'New BSD',
-        ],
-    ]
-);
-
-$param = new ParameterGenerator('test', 'string');
-
-
-$method = new MethodGenerator(
-    'test',
-    [$param],
-    MethodGenerator::FLAG_PRIVATE
-);
-
-$foo->setName('Foo')
-    ->setDocblock($docblock)
-    ->addMethodFromGenerator($method)
-;
+ClassHelper::createGetter('name', 'string', $foo);
+ClassHelper::createGetter('buffer', 'string', $foo);
 
 echo $foo->generate();
